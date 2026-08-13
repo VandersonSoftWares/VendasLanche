@@ -1,0 +1,112 @@
+﻿@model MVCLanche.Models.Lanche
+
+@{
+    ViewData["Title"] = "Detalhes do Lanche";
+}
+
+<h2 class="mb-4">Detalhes do Lanche</h2>
+
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        Informações do Lanche
+    </div>
+
+    <div class="card-body">
+
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <strong>Nome:</strong><br />
+                @Model.Nome
+            </div>
+
+            <div class="col-md-4">
+                <strong>Preço:</strong><br />
+                @Model.Preco.ToString("C")
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <strong>Descrição Curta</strong><br />
+            @Model.DescricaoCurta
+        </div>
+
+        <div class="mb-3">
+            <strong>Descrição Detalhada</strong><br />
+            @Model.DescricaoDetalhada
+        </div>
+
+        <div class="row mb-3">
+
+            <div class="col-md-6">
+                <strong>Imagem</strong><br />
+
+                @if (!string.IsNullOrEmpty(Model.ImagemUrl))
+                {
+                    <img src="@Model.ImagemUrl"
+                         class="img-thumbnail"
+                         style="max-width:250px;" />
+
+                }
+                else
+                {
+                    <span class="text-danger">Sem imagem</span>
+                }
+
+            </div>
+
+            <div class="col-md-6">
+                <strong>Miniatura</strong><br />
+
+                @if (!string.IsNullOrEmpty(Model.ImagemThumbnailUrl))
+                {
+                    <img src="@Model.ImagemThumbnailUrl"
+                         class="img-thumbnail"
+                         style="max-width:150px;" />
+
+                }
+                else
+                {
+                    <span class="text-danger">Sem miniatura</span>
+                }
+
+            </div>
+
+        </div>
+
+        <div class="row mb-3">
+
+            <div class="col-md-4">
+                <strong>Categoria</strong><br />
+                @Model.Categoria?.CategoriaNome
+            </div>
+
+            <div class="col-md-4">
+                <strong>Preferido</strong><br />
+                @(Model.IsLanchePreferido ? "Sim" : "Não")
+            </div>
+
+            <div class="col-md-4">
+                <strong>Em Estoque</strong><br />
+                @(Model.EmEstoque ? "Sim" : "Não")
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card-footer">
+
+        <a asp-action="Edit"
+           asp-route-id="@Model.LancheId"
+           class="btn btn-warning">
+            ✏ Editar
+        </a>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            ↩ Voltar
+        </a>
+
+    </div>
+
+</div>

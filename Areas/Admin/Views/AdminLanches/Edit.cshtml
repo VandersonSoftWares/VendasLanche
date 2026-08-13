@@ -1,0 +1,160 @@
+﻿@model MVCLanche.ViewModels.LancheFormViewModel
+
+@{
+    ViewData["Title"] = "Editar Lanche";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-warning text-dark">
+            <h3 class="mb-0">
+                <i class="bi bi-pencil-square"></i> Editar Lanche
+            </h3>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit" enctype="multipart/form-data">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <input type="hidden" asp-for="LancheId" />
+                <input type="hidden" asp-for="ImagemUrl" />
+                <input type="hidden" asp-for="ImagemThumbnailUrl" />
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Nome" class="form-label"></label>
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="CategoriaId" class="form-label"></label>
+                        <select asp-for="CategoriaId"
+                                asp-items="ViewBag.CategoriaId"
+                                class="form-select">
+                        </select>
+                        <span asp-validation-for="CategoriaId" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="DescricaoCurta" class="form-label"></label>
+                    <input asp-for="DescricaoCurta" class="form-control" />
+                    <span asp-validation-for="DescricaoCurta" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="DescricaoDetalhada" class="form-label"></label>
+                    <textarea asp-for="DescricaoDetalhada"
+                              class="form-control"
+                              rows="4"></textarea>
+                    <span asp-validation-for="DescricaoDetalhada" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="Preco" class="form-label"></label>
+                        <input asp-for="Preco" type="text" class="form-control" />
+                        <span asp-validation-for="Preco" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-8 mb-3">
+
+                        @if (!string.IsNullOrEmpty(Model.ImagemUrl))
+                        {
+                            <div class="mb-2">
+                                <label class="form-label fw-bold">
+                                    Imagem Atual
+                                </label>
+                                <br />
+
+                                <img id="preview"
+                                     src="@Model.ImagemUrl"
+                                     class="img-thumbnail"
+                                     style="max-width:220px;" />
+                            </div>
+                        }
+
+                        <label asp-for="ImagemArquivo" class="form-label"></label>
+
+                        <input asp-for="ImagemArquivo"
+                               type="file"
+                               class="form-control"
+                               accept="image/*" />
+
+                        <span asp-validation-for="ImagemArquivo"
+                              class="text-danger"></span>
+
+                    </div>
+
+                </div>
+
+                <div class="form-check mb-2">
+                    <input asp-for="IsLanchePreferido" class="form-check-input" />
+                    <label asp-for="IsLanchePreferido" class="form-check-label"></label>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input asp-for="EmEstoque" class="form-check-input" />
+                    <label asp-for="EmEstoque" class="form-check-label"></label>
+                </div>
+
+                <hr />
+
+                <div class="d-flex justify-content-between">
+
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i>
+                        Voltar
+                    </a>
+
+                    <button type="submit"
+                            class="btn btn-success">
+                        <i class="bi bi-check-circle"></i>
+                        Salvar Alterações
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+
+        const inputImagem = document.getElementById("ImagemArquivo");
+        const preview = document.getElementById("preview");
+
+        if (inputImagem && preview) {
+
+            inputImagem.addEventListener("change", function(e) {
+
+                const arquivo = e.target.files[0];
+
+                if (arquivo) {
+                    preview.src = URL.createObjectURL(arquivo);
+                }
+
+            });
+
+        }
+
+    </script>
+}

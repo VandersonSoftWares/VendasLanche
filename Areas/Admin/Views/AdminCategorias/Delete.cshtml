@@ -1,0 +1,75 @@
+@model MVCLanche.Models.Categoria
+
+@{
+    ViewData["Title"] = "Excluir Categoria";
+}
+
+<h2 class="mb-4 text-danger">
+    <i class="bi bi-trash"></i> Excluir Categoria
+</h2>
+
+<div class="alert alert-warning shadow-sm">
+
+    <h5>
+        <i class="bi bi-exclamation-triangle-fill"></i> Atenção!
+    </h5>
+
+    <p class="mb-1">
+        Você está prestes a excluir esta categoria.
+    </p>
+
+    <strong>Esta operação não poderá ser desfeita.</strong>
+
+</div>
+
+<div class="card shadow">
+
+    <div class="card-header bg-danger text-white">
+        <i class="bi bi-trash"></i> Confirmação de Exclusão
+    </div>
+
+    <div class="card-body">
+
+        <h3 class="text-center text-primary fw-bold mb-4">
+            @Model.CategoriaNome
+        </h3>
+
+        <div class="mb-3">
+            <strong>Categoria</strong><br />
+            @Model.CategoriaNome
+        </div>
+
+        <div class="mb-3">
+            <strong>Descrição</strong><br />
+            @Model.Descricao
+        </div>
+
+        <hr />
+
+    </div>
+
+    <div class="card-footer">
+
+        <form asp-action="Delete">
+
+            <input type="hidden" asp-for="CategoriaId" />
+
+            <div class="d-flex justify-content-end gap-2">
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Cancelar
+                </a>
+
+                <button type="submit"
+                        class="btn btn-danger">
+                    <i class="bi bi-trash"></i> Excluir definitivamente
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

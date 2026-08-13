@@ -1,0 +1,121 @@
+﻿@model MVCLanche.ViewModels.DashboardGraficoViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">
+            📊 Vendas por Produto - Últimos 30 dias
+        </h5>
+    </div>
+
+    <div class="card-body">
+
+        <div id="grafico30Dias" style="height:450px;"></div>
+
+    </div>
+</div>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-success text-white">
+        <h5 class="mb-0">
+            📊 Vendas por Produto - Últimos 360 dias
+        </h5>
+    </div>
+
+    <div class="card-body">
+
+        <div id="grafico360Dias" style="height:450px;"></div>
+
+    </div>
+</div>
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header bg-warning text-dark">
+        <h5 class="mb-0">
+            🥇 Produtos Mais Vendidos
+        </h5>
+    </div>
+
+    <div class="card-body">
+
+        <div id="graficoProdutosMaisVendidos"
+             style="height:450px;">
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card mt-4">
+
+    <div class="card-header bg-success text-white">
+        <h5 class="mb-0">
+            📈 Faturamento por Período
+        </h5>
+    </div>
+
+    <div class="card-body">
+
+        <div id="graficoFaturamento"
+             style="height:450px;">
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card shadow-sm mt-4 mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">
+            📥 Exportação de Pedidos
+        </h5>
+    </div>
+
+    <div class="card-body text-center">
+
+        <p class="text-muted mb-3">
+            Exporte todos os pedidos cadastrados no sistema para um arquivo Excel.
+        </p>
+
+        <a asp-controller="AdminGrafico"
+           asp-action="ExportarPedidosExcel"
+           class="btn btn-success btn-lg">
+
+            <i class="bi bi-file-earmark-excel"></i>
+            Exportar Pedidos para Excel
+
+        </a>
+
+    </div>
+</div>
+
+@using System.Text.Json
+
+<script>
+
+    const vendas30Dias =
+            @Html.Raw(JsonSerializer.Serialize(Model.Vendas30Dias));
+
+    const vendas360Dias =
+            @Html.Raw(JsonSerializer.Serialize(Model.Vendas360Dias));
+
+    const produtosMaisVendidos =
+            @Html.Raw(JsonSerializer.Serialize(Model.ProdutosMaisVendidos));
+
+</script>
+
+<script>
+    const faturamentoMensal =
+            @Html.Raw(JsonSerializer.Serialize(Model.FaturamentoMensal));
+</script>
+
+@section Scripts
+{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script src="~/js/dashboard.js"></script>
+}

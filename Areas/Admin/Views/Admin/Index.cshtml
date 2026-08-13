@@ -1,0 +1,164 @@
+﻿<div class="text-center mb-4">
+    <img src="~/images/ImgAdmin.png"
+         class="img-fluid"
+         style="max-width:220px;" />
+</div>
+
+<div class="card shadow">
+
+    <div class="card-header bg-dark text-white">
+        <h2 class="mb-0">
+            <i class="bi bi-speedometer2"></i>
+            Painel Administrativo
+        </h2>
+    </div>
+
+    <div class="card-body">
+
+        <p class="lead">
+            Bem-vindo ao painel administrativo do <strong>MVCLanche</strong>.
+        </p>
+
+        <p>
+            Utilize os atalhos abaixo para gerenciar o sistema.
+        </p>
+
+        <hr />
+
+        <div class="row g-3">
+
+            <!-- Categorias -->
+            <div class="col-md-6">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-tags display-4 text-primary"></i>
+
+                        <h4 class="mt-3">
+                            Categorias
+                        </h4>
+
+                        <p>
+                            Cadastre e altere as categorias dos lanches.
+                        </p>
+
+                        <a asp-controller="AdminCategorias"
+                           asp-action="Index"
+                           class="btn btn-primary">
+                            Gerenciar Categorias
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Lanches -->
+            <div class="col-md-6">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-basket-fill display-4 text-success"></i>
+
+                        <h4 class="mt-3">
+                            Lanches
+                        </h4>
+
+                        <p>
+                            Cadastre, altere e exclua produtos.
+                        </p>
+
+                        <a asp-controller="AdminLanches"
+                           asp-action="Index"
+                           class="btn btn-success">
+                            Gerenciar Lanches
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Pedidos -->
+            <div class="col-md-6">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-receipt display-4 text-warning"></i>
+
+                        <h4 class="mt-3">
+                            Pedidos
+                        </h4>
+
+                        <p>
+                            Consulte e gerencie os pedidos realizados.
+                        </p>
+
+                        <a asp-controller="AdminPedidos"
+                           asp-action="Index"
+                           class="btn btn-warning">
+                            Gerenciar Pedidos
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Dashboard -->
+            <div class="col-md-6">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-bar-chart-line-fill display-4 text-info"></i>
+
+                        <h4 class="mt-3">
+                            Dashboard
+                        </h4>
+
+                        <p>
+                            Visualize vendas, produtos e faturamento.
+                        </p>
+
+                        <a asp-controller="AdminGrafico"
+                           asp-action="Index"
+                           class="btn btn-info text-white">
+                            Ver Dashboard
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card-footer text-end">
+
+        <a asp-area=""
+           asp-controller="Home"
+           asp-action="Index"
+           class="btn btn-secondary">
+
+            <i class="bi bi-house"></i>
+            Voltar ao Site
+
+        </a>
+
+    </div>
+
+</div>
