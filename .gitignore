@@ -1,0 +1,54 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build
+[Bb]in/
+[Oo]bj/
+
+# Logs
+*.log
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# ASP.NET / User Secrets
+secrets.json
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Arquivos de publicação
+publish/
+wwwroot/publish/
+
+# Banco de dados local
+*.mdf
+*.ldf
+
+# Arquivos de configuração locais
+appsettings.Development.json
