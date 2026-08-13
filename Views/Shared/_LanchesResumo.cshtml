@@ -1,0 +1,58 @@
+﻿@model Lanche
+
+<div class="col-12 col-sm-6 col-lg-4 mb-4">
+
+    <div class="card shadow h-100">
+
+        <img src="@Model.ImagemUrl"
+             class="card-img-top img-fluid"
+             alt="@Model.Nome" />
+
+
+        <div class="card-body d-flex flex-column">
+
+            <h5 class="card-title">
+                @Model.Nome
+            </h5>
+
+
+            <p class="card-text">
+                @Model.DescricaoCurta
+            </p>
+
+
+            <h4 class="text-success">
+                @Model.Preco.ToString("c")
+            </h4>
+
+
+            <div class="mt-auto">
+
+                <a asp-controller="Lanche"
+                   asp-action="Details"
+                   asp-route-lancheId="@Model.LancheId"
+                   class="btn btn-outline-info w-100 mb-2">
+
+                    Ver detalhes
+
+                </a>
+
+
+                <a class="btn btn-primary w-100"
+                   id="cartButton"
+                   asp-controller="CarrinhoCompra"
+                   asp-action="AdicionarItemNoCarrinhoCompra"
+                   asp-route-lancheId="@Model.LancheId">
+
+                    🛒 Incluir no Carrinho
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>

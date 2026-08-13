@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - MVC Lanche</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MVCLanche.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow py-3">
+
+<div class="container">
+
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center"
+       asp-controller="Home"
+       asp-action="Index">
+
+        <img src="~/images/logo.png"
+             width="55"
+             height="55"
+             class="rounded me-2" />
+
+        <span class="fw-bold fs-3">
+            MVC Lanche
+        </span>
+
+    </a>
+
+    <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMenu">
+
+        <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <div class="collapse navbar-collapse"
+         id="navbarMenu">
+
+        <!-- MENU ESQUERDO -->
+
+        <ul class="navbar-nav ms-4">
+
+            <li class="nav-item">
+
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="nav-link text-white fw-semibold fs-5 px-3">
+
+                    Início
+
+                </a>
+
+            </li>
+
+            @await Component.InvokeAsync("CategoriaMenu")
+
+            <li class="nav-item">
+
+                <a asp-controller="Contato"
+                   asp-action="Index"
+                   class="nav-link text-white fw-semibold fs-5 px-3">
+
+                    Contato
+
+                </a>
+
+            </li>
+
+        </ul>
+                    <!-- Espaçador -->
+                    <div class="flex-grow-1"></div>
+
+                    <!-- Pesquisa -->
+                    <form class="d-flex me-4"
+                          asp-controller="Lanche"
+                          asp-action="Search"
+                          method="get">
+
+                        <input class="form-control rounded-3"
+                               type="search"
+                               placeholder="Pesquisar lanches..."
+                               name="searchString"
+                               style="width:260px;" />
+
+                        <button class="btn btn-warning ms-2 px-3"
+                                type="submit">
+                            🔍
+                        </button>
+
+                    </form>
+
+                    <!-- Carrinho -->
+                    <div class="me-3 d-flex align-items-center">
+
+                        @await Component.InvokeAsync("CarrinhoCompraResumo")
+
+                    </div>
+
+                    <!-- Login -->
+                    <div class="d-flex align-items-center">
+
+                        <partial name="_LoginPartial" />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <div class="container">
+
+        <main class="py-4">
+
+            @RenderBody()
+
+        </main>
+
+    </div>
+
+    <footer class="border-top mt-5 py-3 text-center text-muted">
+
+        <div class="container">
+
+            &copy; 2026 - MVCLanche -
+            <a asp-controller="Home"
+               asp-action="Privacy">
+
+                Política de Privacidade
+
+            </a>
+
+        </div>
+
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

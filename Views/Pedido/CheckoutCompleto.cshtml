@@ -1,0 +1,148 @@
+﻿@model Pedido
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+            <h2 class="mb-0">
+                @ViewBag.CheckoutCompletoMensagem
+            </h2>
+        </div>
+
+
+        <div class="card-body">
+
+            <div class="row mb-3">
+
+                <div class="col-md-4">
+                    <strong>Cliente:</strong>
+                    <br />
+                    @Model.Nome @Model.Sobrenome
+                </div>
+
+                <div class="col-md-4">
+                    <strong>Data do Pedido:</strong>
+                    <br />
+                    @Model.PedidoEnviado
+                </div>
+
+                <div class="col-md-4">
+                    <strong>Número do Pedido:</strong>
+                    <br />
+                    @Model.PedidoId
+                </div>
+
+            </div>
+
+
+            <hr />
+
+
+            <h4 class="mb-3">
+                Itens do Pedido
+            </h4>
+
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped align-middle">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th style="width:70px">
+                                Imagem
+                            </th>
+
+                            <th>
+                                Lanche
+                            </th>
+
+                            <th class="text-center">
+                                Quantidade
+                            </th>
+
+                            <th class="text-end">
+                                Preço
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        @foreach (var item in Model.PedidoItens)
+                        {
+
+                            <tr>
+
+                                <td>
+                                    <img src="@item.Lanche.ImagemUrl"
+                                         width="50"
+                                         height="50"
+                                         class="rounded"
+                                         alt="@item.Lanche.Nome" />
+                                </td>
+
+
+                                <td>
+                                    @item.Lanche.Nome
+                                </td>
+
+
+                                <td class="text-center">
+                                    @item.Quantidade
+                                </td>
+
+
+                                <td class="text-end">
+                                    @item.Lanche.Preco.ToString("C")
+                                </td>
+
+
+                            </tr>
+
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="text-end mt-4">
+
+                <h4>
+                    Valor Total:
+                    <strong class="text-success">
+                        @(((decimal)ViewBag.TotalPedido).ToString("C2"))
+                    </strong>
+                </h4>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="text-center mt-4">
+
+        <a class="btn btn-primary"
+           asp-controller="Home"
+           asp-action="Index">
+
+            Voltar para Home
+
+        </a>
+
+    </div>
+
+
+</div>

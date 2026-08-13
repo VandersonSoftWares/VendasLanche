@@ -1,0 +1,95 @@
+﻿@model MVCLanche.ViewModels.HomeViewModel
+
+<div class="row text-center mb-4">
+    <h2 class="fw-bold">Lanches</h2>
+</div>
+
+<div class="container">
+
+    <section id="sobre" class="mb-5">
+        <div class="row justify-content-center">
+
+            <div class="col-12 col-sm-6 col-md-3 text-center">
+                <img src="~/images/leiaute/icons8-love-50.png"
+                     alt="Feitos com amor"
+                     class="img-fluid" />
+                <h3>Feitos com amor</h3>
+                <p class="text-muted">Fazemos seu lanche com carinho.</p>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 text-center">
+                <img src="~/images/leiaute/icons8-get-dressed-50.png"
+                     alt="Prontos para entrega"
+                     class="img-fluid" />
+                <h3>Prontos para entrega</h3>
+                <p class="text-muted">Entregamos o seu pedido.</p>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 text-center">
+                <img src="~/images/leiaute/icons8-desconto-48.png"
+                     alt="Preços promocionais"
+                     class="img-fluid" />
+                <h3>Preços Camaradas</h3>
+                <p class="text-muted">Promoções imperdíveis.</p>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 text-center">
+                <img src="~/images/leiaute/icons8-comida-natural-50.png"
+                     alt="Lanches naturais"
+                     class="img-fluid" />
+                <h3>Lanches Naturais</h3>
+                <p class="text-muted">...saudáveis e naturais...</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="portfolio" class="mb-5">
+        @await Html.PartialAsync("_IndexPartial")
+    </section>
+
+    <section id="contato">
+        <div class="row">
+
+            <div class="col-12 col-md-5 offset-md-1 text-dark">
+                <h4>&copy; 2026 - MVCLanche</h4>
+
+                <p>
+                    Aqui você encontra aquele lanche gostoso que dá água na boca.
+                    Aquela sobremesa saborosa para acompanhar a sua bebida preferida.
+                    E, se você é vegetariano, também encontrará lanches, sobremesas
+                    e bebidas do seu gosto.
+                </p>
+            </div>
+
+            <div class="col-12 col-md-5 text-dark mt-4 mt-md-0">
+
+                <h4>Tem alguma dúvida?</h4>
+
+                <ul class="list-unstyled">
+
+                    <li class="py-1">
+                        Rua Dr. Manoel Ignácio Marcondes Romeiro
+                    </li>
+
+                    <li class="py-1">
+                        <a href="tel:+5512952843718" class="text-decoration-none">
+                            +55 (12) 95284-3718
+                        </a>
+                    </li>
+
+                    <li class="py-1">
+                        <a href="f.c.vanderson@gmail.com"
+                           class="text-decoration-none">
+                            f.c.vanderson@gmail.com"
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+    </section>
+
+</div>

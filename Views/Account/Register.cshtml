@@ -1,0 +1,89 @@
+﻿@model MVCLanche.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+
+            <div class="card shadow">
+                <div class="card-header bg-success text-white text-center">
+                    <h3>Criar uma Conta</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-action="Register" method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="UserName" class="form-label"></label>
+                            <input asp-for="UserName"
+                                   class="form-control"
+                                   placeholder="Digite um nome de usuário" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password"
+                                   class="form-control"
+                                   type="password"
+                                   placeholder="Digite sua senha" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ConfirmPassword" class="form-label"></label>
+                            <input asp-for="ConfirmPassword"
+                                   class="form-control"
+                                   type="password"
+                                   placeholder="Confirme sua senha" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">
+                                Registrar
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <hr />
+
+                    <div class="text-center">
+                        <p class="mb-2">
+                            Já possui uma conta?
+                        </p>
+
+                        <img src="~/images/ImgRegistro.png"
+                             width="50"
+                             height="50"
+                             class="rounded me-2" />
+
+                        <a asp-action="Login"
+                           class="btn btn-outline-primary">
+                            Fazer Login
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

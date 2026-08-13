@@ -1,0 +1,26 @@
+﻿@model MVCLanche.ViewModels.CarrinhoCompraViewModel
+
+@if (Model.CarrinhoCompra.CarrinhoCompraItems.Count > 0)
+{
+    <div class="nav-item">
+
+        <a class="nav-link text-light d-flex align-items-center position-relative"
+           asp-controller="CarrinhoCompra"
+           asp-action="Index">
+
+            <span class="me-2">
+                🛒
+            </span>
+
+            <span>
+                Carrinho
+            </span>
+
+            <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">
+                @Model.CarrinhoCompra.CarrinhoCompraItems.Count
+            </span>
+
+        </a>
+
+    </div>
+}
